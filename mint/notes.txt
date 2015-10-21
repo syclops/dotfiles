@@ -47,3 +47,7 @@ Successfully installed colorama-0.3.3 decorator-4.0.4 pathlib-1.0.1 psutil-3.2.2
 /usr/local/lib/python2.7/dist-packages/pip/_vendor/requests/packages/urllib3/util/ssl_.py:90: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. For more information, see https://urllib3.readthedocs.org/en/latest/security.html#insecureplatformwarning.
   InsecurePlatformWarning
 
+For setting up Thunderbird:
+http://wiki.dreamhost.com/Mozilla_Thunderbird
+Note: use when manually configuring, set authentication mode to "Encrypted Password" for the server check to pass
+
