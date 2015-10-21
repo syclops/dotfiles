@@ -1,4 +1,10 @@
 # This file contains a list of packages to install under apt-get.
 
+# Dependencies for installing KeePassX Beta
+libqt4-dev
+g++
+cmake
+libgcrypt20-dev
+
 # Prerequisite for installing the Solarized color scheme
 dconf-cli
