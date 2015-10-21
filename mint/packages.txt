@@ -21,3 +21,7 @@ libqt4-dev
 
 # Prerequisite for installing the Solarized color scheme
 dconf-cli
+
+# Dependencies for YouCompleteMe
+build-essentials
+python-dev
