@@ -54,4 +54,4 @@ Note: use when manually configuring, set authentication mode to "Encrypted Passw
 GitHub remotes for forks must be set up per device.
 Follow the instructions at https://help.github.com/articles/configuring-a-remote-for-a-fork/
 which at the time use the following command:
-git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+git remote add upstream git@github.com:ORIGINAL-OWNER/ORIGINAL-REPO.git
