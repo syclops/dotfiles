@@ -1,4 +1,15 @@
-# This file contains a list of packages to install under apt-get.
+# This file contains a list of packages to install under apt-get. You should
+# have already upgraded the packages from a clean install and installed git,
+# ssh, and python-gpgme.
+
+# Packages that should be installed on all Mint machines
+vim-gnome
+python3
+texlive
+latex-xcolor
+latex-beamer
+zsh
+mosh
 
 # Dependencies for installing KeePassX Beta
 libqt4-dev
