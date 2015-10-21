@@ -5,11 +5,13 @@
 # Packages that should be installed on all Mint machines
 cmake
 g++
+irssi
 latex-beamer
 latex-xcolor
 mosh
 python3
 texlive
+tmux
 vim-gnome
 zsh
 
