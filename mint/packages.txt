@@ -3,13 +3,13 @@
 # ssh, and python-gpgme.
 
 # Packages that should be installed on all Mint machines
-vim-gnome
+latex-beamer
+latex-xcolor
+mosh
 python3
 texlive
-latex-xcolor
-latex-beamer
+vim-gnome
 zsh
-mosh
 
 # Dependencies for installing KeePassX Beta
 libqt4-dev
