@@ -25,3 +25,14 @@ dconf-cli
 # Dependencies for YouCompleteMe
 build-essentials
 python-dev
+
+# Dependencies for xcape
+install
+git
+gcc
+make
+pkg-config
+libx11-dev
+libxtst-dev
+libxi-dev
+
