@@ -1,0 +1,49 @@
+While installing thefuck, I had this error:
+Setting up python-pip (1.5.4-1ubuntu3) ...
+sh: 18: [[: not found
+Downloading/unpacking pip from https://pypi.python.org/packages/py2.py3/p/pip/pip-7.1.2-py2.py3-none-any.whl#md5=5ff9fec0be479e4e36df467556deed4d
+  Downloading pip-7.1.2-py2.py3-none-any.whl (1.1MB): 1.1MB downloaded
+Downloading/unpacking setuptools from https://pypi.python.org/packages/3.5/s/setuptools/setuptools-18.4-py2.py3-none-any.whl#md5=7fcc3027ef72df6be665c271d3c457b2
+  Downloading setuptools-18.4-py2.py3-none-any.whl (462kB): 462kB downloaded
+Installing collected packages: pip, setuptools
+  Found existing installation: pip 1.5.4
+    Not uninstalling pip at /usr/lib/python2.7/dist-packages, owned by OS
+  Found existing installation: setuptools 3.3
+    Not uninstalling setuptools at /usr/lib/python2.7/dist-packages, owned by OS
+Successfully installed pip setuptools
+Cleaning up...
+The directory '/home/steve/.cache/pip/http' or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+The directory '/home/steve/.cache/pip' or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+Collecting thefuck
+/usr/local/lib/python2.7/dist-packages/pip/_vendor/requests/packages/urllib3/util/ssl_.py:90: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. For more information, see https://urllib3.readthedocs.org/en/latest/security.html#insecureplatformwarning.
+  InsecurePlatformWarning
+  Downloading thefuck-3.1-py2.py3-none-any.whl (110kB)
+    100% |████████████████████████████████| 114kB 645kB/s 
+Collecting psutil (from thefuck)
+  Downloading psutil-3.2.2.tar.gz (253kB)
+    100% |████████████████████████████████| 253kB 718kB/s 
+Collecting decorator (from thefuck)
+  Downloading decorator-4.0.4-py2.py3-none-any.whl
+Collecting six (from thefuck)
+  Downloading six-1.10.0-py2.py3-none-any.whl
+Collecting pathlib (from thefuck)
+  Downloading pathlib-1.0.1.tar.gz (49kB)
+    100% |████████████████████████████████| 53kB 627kB/s 
+Collecting colorama (from thefuck)
+  Downloading colorama-0.3.3.tar.gz
+Installing collected packages: psutil, decorator, six, pathlib, colorama, thefuck
+  Running setup.py install for psutil
+  Found existing installation: six 1.5.2
+    DEPRECATION: Uninstalling a distutils installed project (six) has been deprecated and will be removed in a future version. This is due to the fact that uninstalling a distutils project will only partially uninstall the project.
+    Uninstalling six-1.5.2:
+      Successfully uninstalled six-1.5.2
+  Running setup.py install for pathlib
+  Found existing installation: colorama 0.2.5
+    DEPRECATION: Uninstalling a distutils installed project (colorama) has been deprecated and will be removed in a future version. This is due to the fact that uninstalling a distutils project will only partially uninstall the project.
+    Uninstalling colorama-0.2.5:
+      Successfully uninstalled colorama-0.2.5
+  Running setup.py install for colorama
+Successfully installed colorama-0.3.3 decorator-4.0.4 pathlib-1.0.1 psutil-3.2.2 six-1.10.0 thefuck-3.1
+/usr/local/lib/python2.7/dist-packages/pip/_vendor/requests/packages/urllib3/util/ssl_.py:90: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. For more information, see https://urllib3.readthedocs.org/en/latest/security.html#insecureplatformwarning.
+  InsecurePlatformWarning
+
