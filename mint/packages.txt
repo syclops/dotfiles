@@ -3,6 +3,8 @@
 # ssh, and python-gpgme.
 
 # Packages that should be installed on all Mint machines
+cmake
+g++
 latex-beamer
 latex-xcolor
 mosh
@@ -13,8 +15,6 @@ zsh
 
 # Dependencies for installing KeePassX Beta
 libqt4-dev
-g++
-cmake
 libgcrypt20-dev
 
 # Prerequisite for installing the Solarized color scheme
