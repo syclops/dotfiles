@@ -14,8 +14,8 @@ vim-gnome
 zsh
 
 # Dependencies for installing KeePassX Beta
-libqt4-dev
 libgcrypt20-dev
+libqt4-dev
 
 # Prerequisite for installing the Solarized color scheme
 dconf-cli
