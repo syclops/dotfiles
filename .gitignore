@@ -1,0 +1,5 @@
+# Ignore the local folder (used for custom packages conflicting with /usr/bin/)
+local/
+
+# Ignore svn 1.7 build files
+source/subversion-1.7.22*
