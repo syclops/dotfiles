@@ -6,11 +6,13 @@
 cmake
 g++
 irssi
+latexmk
 latex-beamer
 latex-xcolor
 mosh
 python3
 texlive
+texlive-science
 tmux
 vim-gnome
 zsh
