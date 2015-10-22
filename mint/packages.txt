@@ -10,6 +10,7 @@ latex-beamer
 latex-xcolor
 mosh
 python3
+subversion
 texlive
 tmux
 vim-gnome
@@ -34,3 +35,8 @@ pkg-config
 libx11-dev
 libxtst-dev
 libxi-dev
+
+# Dependencies for SVN 1.7 (from source)
+libapr1-dev
+libaprutil1-dev
+ruby-dev
