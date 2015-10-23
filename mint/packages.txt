@@ -41,4 +41,5 @@ libxi-dev
 # Dependencies for SVN 1.7 (from source)
 libapr1-dev
 libaprutil1-dev
+libneon27-dev
 ruby-dev
