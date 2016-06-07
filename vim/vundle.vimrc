@@ -5,8 +5,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle
-" required! 
-Plugin 'gmarik/vundle'
+" required!
+Plugin 'VundleVim/Vundle.vim'
 
 " My Plugins here:
 "
@@ -20,7 +20,7 @@ Plugin 'scrooloose/nerdtree'
 " Powerful word-granularity navigation
 Plugin 'Lokaltog/vim-easymotion'
 " Lightweight buffer manager
-Plugin 'fholgado/minibufexpl.vim'
+"Plugin 'fholgado/minibufexpl.vim'
 " Awesome LaTeX features
 Plugin 'vim-latex/vim-latex'
 " Easy paired character management
@@ -43,6 +43,8 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-speeddating'
 " Sugar for common UNIX commands
 Plugin 'tpope/vim-eunuch'
+"Git wrapper
+Plugin 'tpope/vim-fugitive'
 " Autocompletion of code snippets
 "Plugin 'MarcWeber/vim-addon-mw-utils'
 "Plugin 'tomtom/tlib_vim'
@@ -77,16 +79,35 @@ Plugin 'nvie/vim-togglemouse'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 " Language tools for grammar checking
 "Plugin 'languagetool-org/languagetool'
-
+" Better support for Python virtual environment
+"Plugin 'jmcantrell/vim-virtualenv'
 " vim-scripts repos
 " Automatically match delimiters
 Plugin 'delimitMate.vim'
 " More powerful % match
 Plugin 'matchit.zip'
 " Yank Ring for better copy/pasting
-Plugin 'YankRing.vim'
+"Plugin 'YankRing.vim'
 " Language tools for grammar checking
 Plugin 'vim-scripts/LanguageTool'
+" Nice status line
+Plugin 'bling/vim-airline'
+" airline-style command prompt
+Plugin 'edkolev/promptline.vim'
+" Flappy bird
+"Plugin 'mattn/flappyvird-vim'
+" Front-end for ag
+Plugin 'rking/ag.vim'
+" Outline browser
+Plugin 'majutsushi/tagbar'
+" Show indent lines
+Plugin 'nathanaelkane/vim-indent-guides'
+" Rainbow parentheses
+Plugin 'luochen1990/rainbow'
+" Tag file management
+Plugin 'ludovicchabant/vim-gutentags'
+
+Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()
 
