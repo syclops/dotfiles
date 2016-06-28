@@ -106,6 +106,8 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'luochen1990/rainbow'
 " Tag file management
 Plugin 'ludovicchabant/vim-gutentags'
+" Syntax highlighting for Solidity
+Plugin 'tomlion/vim-solidity'
 
 Plugin 'vim-airline/vim-airline-themes'
 
