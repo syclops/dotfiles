@@ -3,3 +3,6 @@ local/
 
 # Ignore svn 1.7 build files
 source/subversion-1.7.22*
+
+# Ignore private ZSH configs
+zsh/private.zsh
