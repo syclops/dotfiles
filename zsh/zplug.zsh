@@ -1,6 +1,6 @@
 # To use zplug as a plugin manager, ensure the following two lines are not
 # commented out.
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=$HOME/.zplug
 source $ZPLUG_HOME/init.zsh
 
 # Let zplug manage itself
