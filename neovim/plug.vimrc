@@ -21,7 +21,7 @@ Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'Lokaltog/vim-easymotion'
 
 " Asynchronous, smart tags file management'
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 
 " Rainbow parentheses
 Plug 'luochen1990/rainbow'

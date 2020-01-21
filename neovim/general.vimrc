@@ -54,8 +54,8 @@ autocmd FileType gitcommit set tw=72
 autocmd FileType gitcommit set colorcolumn=72
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python2_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 let g:tex_flavor = 'latex'
 
 let mapleader=","
