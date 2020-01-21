@@ -1,5 +1,5 @@
 # zsh configuration
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 
 # Use zplug
 source $ZSH_CONFIG/zplug.zsh
