@@ -9,6 +9,9 @@ Plug 'brennier/quicktex'
 " Dev version
 "Plug 'syclops/quicktex'
 
+" Support for terraform files
+Plug 'hashivim/vim-terraform'
+
 " Powerful code testing
 Plug 'janko-m/vim-test'
 

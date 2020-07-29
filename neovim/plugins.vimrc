@@ -7,12 +7,12 @@ hi link EasyMotionTarget2First Todo
 hi link EasyMotionTarget2Second Underlined
 
 " Shougo/deoplete.nvim
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#auto_complete_delay = 50
-let g:deoplete#auto_refresh_delay = 25
-let g:deoplete#enable_at_startup = 1
+"if !exists('g:deoplete#omni#input_patterns')
+  "let g:deoplete#omni#input_patterns = {}
+"endif
+call deoplete#custom#option({'auto_complete_delay': 50})
+call deoplete#custom#option({'auto_refresh_delay': 25})
+call deoplete#custom#option({'enable_at_startup': 1})
 
 " SirVer/ultisnips
 let g:UltiSnipsExpandTrigger="<c-f>"
