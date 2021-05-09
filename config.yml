@@ -1,0 +1,47 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  vars:
+    # Set the default values of user and system directories, according to the
+    # XDG base specifications.
+    default_config_home: "{{ ansible_env.HOME }}/.config"
+    default_cache_home: "{{ ansible_env.HOME }}/.cache"
+    default_data_home: "{{ ansible_env.HOME }}/.local/share"
+    default_data_dirs: "/usr/local/share:/usr/share"
+    default_config_dirs: "/etc/xdg"
+    # Check if any of the XDG specification variables have been defined by the
+    # user, substituting the default values if necessary.
+    # TODO: there is probably a cleaner way than this repetitive code.
+    config_home: "{{ lookup('env', 'XDG_CONFIG_HOME') | default(lookup('vars', 'default_config_home'), True) }}"
+    cache_home: "{{ lookup('env', 'XDG_CACHE_HOME') | default(lookup('vars', 'default_cache_home'), True) }}"
+    data_home: "{{ lookup('env', 'XDG_DATA_HOME') | default(lookup('vars', 'default_data_home'), True) }}"
+    data_dirs: "{{ lookup('env', 'XDG_DATA_DIRS') | default(lookup('vars', 'default_data_dirs'), True) }}"
+    config_dirs: "{{ lookup('env', 'XDG_CONFIG_DIRS') | default(lookup('vars', 'default_config_dirs'), True) }}"
+    zplug_home: "{{ lookup('env', 'ZPLUG_HOME') | default('~/.zplug', True) }}"
+  tasks:
+    - name: Create config directories that do not exist
+      file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - "{{ config_home }}"
+        - "{{ cache_home }}"
+        - "{{ data_home }}"
+    - name: Symlink zshrc into home directory
+      file:
+        src: "{{ playbook_dir }}/zsh/zshrc"
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        state: link
+    - name: Check if zplug directory exists
+      stat:
+        path: "{{ zplug_home }}"
+      register: zplug_dir
+    - name: Set up zplug if not already set up
+      shell:
+        cmd: curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+      when: not zplug_dir.stat.exists
+    - name: Symlink zsh config directory inside XDG config directory
+      file:
+        src: "{{ playbook_dir }}/zsh"
+        path: "{{ config_home }}/zsh"
+        state: link

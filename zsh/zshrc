@@ -8,3 +8,6 @@ export ZSH_CONFIG=$XDG_CONFIG_HOME/zsh
 source $ZSH_CONFIG/init.zsh
 
 # STOP. DO NOT ADD ANYTHING TO THIS FILE. Change the init.zsh file instead.
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
