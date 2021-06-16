@@ -31,6 +31,8 @@ set ut=10000  " If nothing is typed for 10 seconds, write the swap file to disk
 set verbosefile=~/nvim.txt
 set wildignore=*.ai,*.eps,*.log,*.aux
 set wildmode=list:longest,full  " match longest common command first
+execute "set t_8f=\e[38;2;%lu;%lu;%lum"
+execute "set t_8b=\e[48;2;%lu;%lu;%lum"
 
 if &term =~ '^screen'
 		" tmux knows the extended mouse mode
