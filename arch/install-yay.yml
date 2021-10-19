@@ -1,0 +1,17 @@
+---
+- name: Install yay
+  hosts: localhost
+  tasks:
+    - name: Install base-devel package group (needed for yay)
+      become: yes
+      community.general.pacman:
+        name: base-devel
+        state: latest
+    - name: Clone yay repo
+      ansible.builtin.git:
+        repo: "https://aur.archlinux.org/yay.git"
+        dest: "/home/{{ ansible_user_id }}/yay"
+    - name: Move into yay repo
+      ansible.builtin.command:
+        chdir: "/home/{{ ansible_user_id }}/yay"
+        cmd: "makepkg -si --noconfirm"

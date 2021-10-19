@@ -1,0 +1,32 @@
+---
+- name: Install playerctl (used to control media players)
+  become: yes
+  community.general.pacman:
+    name: playerctl
+    state: latest
+- name: Install i3
+  become: yes
+  community.general.pacman:
+    name: i3-wm
+    state: latest
+- name: Copy i3 config
+  ansible.builtin.copy:
+    src: config
+    dest: "{{ config_home }}/i3/config"
+- name: Install polybar
+  kewlfft.aur.aur:
+    name: polybar
+    aur_only: yes
+- name: Create polybar config directory
+  ansible.builtin.file:
+    path: "{{ config_home }}/polybar"
+    state: directory
+  register: polybar_config
+- name: Copy polybar launch script
+  ansible.builtin.copy:
+    src: launch.sh
+    dest: "{{ polybar_config.path }}/launch.sh"
+- name: Copy polybar config
+  ansible.builtin.copy:
+    src: polybar-config
+    dest: "{{ polybar_config.path }}/config"

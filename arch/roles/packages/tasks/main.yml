@@ -1,0 +1,38 @@
+---
+- name: Install packages with pacman
+  become: yes
+  community.general.pacman:
+    name:
+      - man-db
+      - man-pages
+      - texinfo
+      - which
+      - acpi
+      - ttf-dejavu
+      - firefox
+      - nextcloud
+      - nextcloud-client
+      - dmenu
+      - thunderbird
+      - signal-desktop
+      - discord
+      - pipewire
+      - pipewire-pulse
+      - youtube-dl
+      - vim
+      - emacs
+      - clang
+      - llvm
+      - cmake
+      - gcc
+      - tree
+      - gdb
+      - physlock
+      - gnome-keyring
+      - the_silver_searcher
+      - keepassxc
+      - zathura
+      - pciutils
+      - usbutils
+      - autorandr
+    state: latest

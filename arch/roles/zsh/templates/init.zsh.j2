@@ -1,0 +1,25 @@
+# zsh configuration
+#export TERM="xterm-256color"
+
+# Use zplug
+source {{ config_home}}/zsh/zplug.zsh
+
+# Path settings
+source {{ config_home}}/zsh/path.zsh
+
+# Aliases
+source {{ config_home}}/zsh/alias.zsh
+
+# Functions
+source {{ config_home}}/zsh/func.zsh
+
+# Variables
+source {{ config_home}}/zsh/vars.zsh
+
+# Miscellaneous
+source {{ config_home}}/zsh/misc.zsh
+
+# Private
+if [ -f "{{ config_home}}/zsh/private.zsh" ]; then
+  source {{ config_home}}/zsh/private.zsh
+fi

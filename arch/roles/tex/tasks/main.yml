@@ -1,0 +1,7 @@
+---
+- name: Install latex
+  become: yes
+  community.general.pacman:
+    name:
+      - texlive-most
+    state: latest

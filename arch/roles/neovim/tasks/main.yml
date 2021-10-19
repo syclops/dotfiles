@@ -1,0 +1,18 @@
+---
+- name: Install neovim
+  community.general.pacman:
+    name: neovim
+    state: latest
+- name: Create necessary directories for vim-plug script
+  ansible.builtin.file:
+    path: "{{ data_home }}/nvim/site/autoload"
+    state: directory
+  register: vim_plug_dest
+- name: Download plugin script for vim-plug
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    dest: "{{ vim_plug_dest.path }}/plug.vim"
+- name: Copy/update configuration files
+  ansible.builtin.copy:
+    src: nvim/
+    dest: "{{ config_home }}/nvim/"

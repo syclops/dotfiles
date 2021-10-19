@@ -1,0 +1,20 @@
+---
+- name: Create the `aur_builder` user
+  become: yes
+  ansible.builtin.user:
+    name: aur_builder
+    create_home: yes
+    group: sudo
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+    create: yes
+    validate: "visudo -csf %s"
+- name: Install packages using yay
+  kewlfft.aur.aur:
+    name:
+      - powerline-fonts-git
+      - polybar
+    aur_only: yes

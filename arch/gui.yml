@@ -1,0 +1,12 @@
+---
+- name: Install yay
+  hosts: localhost
+  tasks:
+    - name: Install graphics packages
+      become: yes
+      community.general.pacman:
+        name:
+          - xorg-server
+          - xorg-xinit
+          - i3-wm
+        state: latest

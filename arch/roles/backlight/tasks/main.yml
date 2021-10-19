@@ -1,0 +1,12 @@
+---
+- name: Add admin user to video group
+  become: yes
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    groups: video
+    append: yes
+- name: Copy/update backlight rules file
+  become: yes
+  ansible.builtin.copy:
+    src: backlight.rules
+    dest: /etc/udev/rules.d/backlight.rules

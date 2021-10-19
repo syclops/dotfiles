@@ -1,0 +1,24 @@
+---
+- name: Install tmux and xclip (required for copy/paste)
+  become: yes
+  community.general.pacman:
+    name:
+      - tmux
+      - xclip
+    state: latest
+- name: Copy/update tmux configuration file
+  ansible.builtin.template:
+    src: tmux.conf.j2
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+- name: Clone tpm repo for plugin management
+  ansible.builtin.git:
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
+- name: Copy/update tmux configuration directory
+  ansible.builtin.copy:
+    src: tmux/
+    dest: "{{ config_home }}/tmux/"
+- name: Copy/update tmux init file
+  ansible.builtin.template:
+    src: init.tmux.conf.j2
+    dest: "{{ config_home }}/tmux/init.tmux.conf"

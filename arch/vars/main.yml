@@ -1,0 +1,4 @@
+---
+config_home: "{{ lookup('env', 'XDG_CONFIG_HOME') | default(lookup('env', 'HOME') ~ '/.config', true) }}"
+data_home: "{{ lookup('env', 'XDG_DATA_HOME') | default(lookup('env', 'HOME') ~ '/.local/share', true) }}"
+playbook_var: bar

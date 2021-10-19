@@ -1,0 +1,20 @@
+# tmux configuration
+# Author: Steve Matsumoto
+
+# Use vim keybindings in copy mode
+#setw -g mode-keys vi
+
+# Use the Powerline status bar
+#run-shell "powerline-daemon -q"
+#source "/usr/local/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf"
+
+# Set global options
+source-file {{ config_home }}/tmux/option.tmux.conf
+
+# Key bindings
+source-file {{ config_home }}/tmux/bind.tmux.conf
+
+# Use TPM for plugins, defined in a separate file. THIS LINE MUST BE AT THE
+# BOTTOM.
+source-file {{ config_home }}/tmux/tpm.tmux.conf
+

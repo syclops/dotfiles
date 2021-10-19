@@ -1,0 +1,19 @@
+---
+- name: Install interception-tools and the caps2esc extension
+  become: yes
+  community.general.pacman:
+    name:
+      - interception-tools
+      - interception-caps2esc
+    state: latest
+- name: Copy/update udevmon configuration
+  become: yes
+  ansible.builtin.copy:
+    src: udevmon.yaml
+    dest: /etc/interception/udevmon.yaml
+- name: Start udevmon systemd unit and set it to start at boot
+  become: yes
+  ansible.builtin.systemd:
+    name: udevmon
+    state: started
+    enabled: yes

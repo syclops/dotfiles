@@ -1,0 +1,12 @@
+---
+- name: Install acpid
+  become: yes
+  community.general.pacman:
+    name: acpid
+    state: latest
+- name: Start acpid service and enable it to run at boot
+  become: yes
+  ansible.builtin.systemd:
+    name: acpid
+    state: started
+    enabled: yes

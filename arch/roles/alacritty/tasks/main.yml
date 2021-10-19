@@ -1,0 +1,15 @@
+---
+- name: Install alacritty
+  become: yes
+  community.general.pacman:
+    name: alacritty
+    state: latest
+- name: Create alacritty config directory
+  ansible.builtin.file:
+    path: "{{ config_home }}/alacritty"
+    state: directory
+  register: alacritty_config
+- name: Copy alacritty config
+  ansible.builtin.copy:
+    src: alacritty.yml
+    dest: "{{ alacritty_config.path }}/alacritty.yml"

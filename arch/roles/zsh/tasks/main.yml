@@ -1,0 +1,31 @@
+---
+- name: Install thefuck and zsh
+  become: yes
+  community.general.pacman:
+    name:
+      - thefuck
+      - zsh
+    state: latest
+- name: Copy/update zshrc to home directory
+  ansible.builtin.template:
+    src: zshrc.j2
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+- name: Download zplug install script
+  ansible.builtin.uri:
+    url: https://raw.githubusercontent.com/zplug/installer/master/installer.zsh
+    follow_redirects: safe
+    return_content: yes
+  register: zplug_installer
+- name: Run zplug install script
+  ansible.builtin.command:
+    cmd: zsh
+    stdin: "{{ zplug_installer.content }}"
+    creates: "{{ ansible_env.HOME }}/.zplug"
+- name: Copy/update zsh config directory
+  ansible.builtin.copy:
+    src: zsh/
+    dest: "{{ config_home }}/zsh/"
+- name: Copy/update zsh init file
+  ansible.builtin.template:
+    src: init.zsh.j2
+    dest: "{{ config_home }}/zsh/init.zsh"
