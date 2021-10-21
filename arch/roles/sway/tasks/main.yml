@@ -1,0 +1,25 @@
+---
+- name: Install sway and swaybar
+  become: yes
+  community.general.pacman:
+    name:
+      - sway
+      - waybar
+- name: Create sway config directory
+  ansible.builtin.file:
+    path: "{{ config_home }}/sway"
+    state: directory
+  register: sway_config
+- name: Copy sway config
+  ansible.builtin.copy:
+    src: sway-config
+    dest: "{{ sway_config.path }}/config"
+- name: Create waybar config directory
+  ansible.builtin.file:
+    path: "{{ config_home }}/waybar"
+    state: directory
+  register: waybar_config
+- name: Copy waybar config
+  ansible.builtin.copy:
+    src: waybar-config
+    dest: "{{ waybar_config.path }}/config"

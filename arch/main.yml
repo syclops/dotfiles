@@ -8,11 +8,10 @@
     - backlight
     - bluetooth
     - interception_tools
-    - i3
     - neovim
     - packages
+    - sway
     - tex
     - tmux
-    - xorg
     - yay
     - zsh
