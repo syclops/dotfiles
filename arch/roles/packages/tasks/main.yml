@@ -35,4 +35,5 @@
       - pciutils
       - usbutils
       - autorandr
+      - fasd
     state: latest
