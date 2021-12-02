@@ -8,6 +8,8 @@
     - backlight
     - bluetooth
     - interception_tools
+    - i3
+    - japanese
     - neovim
     - packages
     - sway

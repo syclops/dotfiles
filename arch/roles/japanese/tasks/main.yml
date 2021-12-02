@@ -1,0 +1,11 @@
+---
+- name: Install Japanese fonts
+  become: yes
+  community.general.pacman:
+    name:
+      - adobe-source-han-sans-jp-fonts
+      - adobe-source-han-serif-jp-fonts
+      - otf-ipafont
+      - ttf-hanazono
+      - ttf-sazanami
+    state: latest
