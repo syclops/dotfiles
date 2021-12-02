@@ -12,9 +12,11 @@
     - japanese
     - neovim
     - packages
+    - swap
     - sway
     - tex
     - tmux
+    - xorg
     - yay
     - yubikey
     - zsh

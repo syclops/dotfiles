@@ -1,0 +1,35 @@
+---
+- name: Create swap file if necessary
+  become: yes
+  ansible.builtin.command:
+    cmd: dd if=/dev/zero of=/swapfile bs=1M count=65536 status=none
+    creates: /swapfile
+- name: Set the right permissions on the swap file
+  become: yes
+  ansible.builtin.file:
+    path: /swapfile
+    mode: '0600'
+- name: Check if swap file has already been set up
+  become: yes
+  ansible.builtin.command:
+    cmd: file /swapfile
+  register: swap_setup
+- name: Set up swap file
+  become: yes
+  ansible.builtin.command:
+    cmd: mkswap /swapfile
+  when: swap_setup.stdout.find('swap file') == -1
+- name: Add swapfile to fstab
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/fstab
+    line: '/swapfile none swap defaults 0 0'
+- name: Check if swap file is active
+  ansible.builtin.command:
+    cmd: swapon --show
+  register: swap_active
+- name: Mount swap file
+  become: yes
+  ansible.builtin.command:
+    cmd: swapon /swapfile
+  when: swap_active.stdout == ""
