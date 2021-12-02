@@ -88,5 +88,8 @@ Plug 'w0rp/ale'
 " Jedi Python completion for deoplete
 Plug 'zchee/deoplete-jedi'
 
+" Sudo write trick
+Plug 'lambdalisue/suda.vim'
+
 " Initialize plugin system
 call plug#end()
