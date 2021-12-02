@@ -1,0 +1,12 @@
+---
+- name: Install Yubico Authenticator
+  become: yes
+  community.general.pacman:
+    name: yubioath-desktop
+    state: latest
+- name: Start and enable pcscd systemd unit
+  become: yes
+  ansible.builtin.systemd:
+    name: pcscd
+    state: started
+    enabled: yes
