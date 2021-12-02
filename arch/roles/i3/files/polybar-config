@@ -1,18 +1,38 @@
 [colors]
-background = #fdf6e3
-foreground = #657b83
+; Define colors in the Solarized scheme
+base03 = #002b36
+base02 = #073642
+base01 = #586e75
+base00 = #657b83
+base0 = #839496
+base1 = #93a1a1
+base2 = #eee8d5
+base3 = #fdf6e3
+yellow = #b58900
+orange = #cb4b16
+red = #dc322f
+magenta = #d33682
+violet = #6c71c4
+blue = #268bd2
+cyan = #2aa198
+green = #859900
+; Use the Solarized Light color scheme
+background = ${self.base3}
+foreground = ${self.base00}
 primary = #ffb52a
 secondary = #e60053
 alert = #dc322f
 
 [bar/mybar]
-modules-right = eth wlan battery
+modules-right = backlight pulseaudio cpu memory eth wlan battery
 modules-center = date
 modules-left = i3
-font-0 = DejaVuSans:size=8
+font-0 = NotoSans:size=8;2
+font-1 = DejaVu Sans Mono wifi ramp:size=10
+font-2 = 
 dpi = 282
-height = 45
-separator = |
+height = 60
+separator =
 tray-position = right
 tray-scale = 1.0
 tray-maxsize = 32
@@ -20,6 +40,13 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 module-margin-left = 1
 module-margin-right = 1
+line-size=4
+
+[module/backlight]
+type = internal/backlight
+; To see available cards controlling backlight, use `ls -1 /sys/class/backlight`
+card = intel_backlight
+format-underline = ${colors.yellow}
 
 [module/date]
 type = internal/date
@@ -29,38 +56,43 @@ date = %a %e %b %H:%M
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
+enable-scroll = false
 wrapping-scroll = false
+
+label-scheme = %index%
+label-padding = 1
+visible-color = ${colors.base2}
+focused-color = ${colors.base1}
 
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+;label-mode-padding = 0
+;label-mode-foreground = #000
+;label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused = ${self.label-scheme}
+label-focused-background = ${self.visible-color}
+label-focused-underline= ${self.focused-color}
+label-focused-padding = ${self.label-padding}
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-padding = 2
+label-unfocused = ${self.label-scheme}
+label-unfocused-padding = ${self.label-padding}
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
+label-visible = ${self.label-scheme}
+label-visible-background = ${self.visible-color}
+label-visible-padding = ${self.label-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent = ${self.label-scheme}
+label-urgent-background = ${colors.red}
+label-urgent-padding = ${self.label-padding}
 
 ; Separator in between workspaces
-; label-separator = |
+; label-separator = 
 
 [module/battery]
 type = internal/battery
@@ -100,20 +132,21 @@ interface = wlan0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = ↓%downspeed:9% ↑%upspeed:9%
+format-connected-underline = ${colors.blue}
+label-connected = %essid% (%downspeed% %upspeed%)
 
-format-disconnected =
+format-disconnected = <label-disconnected>
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-5 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
@@ -131,3 +164,41 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format = <label> <ramp-coreload>
+format-underline = ${colors.violet}
+label = %percentage:2%%
+; Spacing between individual per-core ramps
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+[module/memory]
+type = internal/memory
+interval = 3
+format = <label>
+format-underline = ${colors.orange}
+label = %gb_used% %gb_swap_used%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <ramp-volume> <label-volume>
+format-volume-underline = ${colors.green}
+label-muted = M
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
+; Right and Middle click
+click-right = pavucontrol
