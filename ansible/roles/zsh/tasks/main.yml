@@ -1,11 +1,21 @@
 ---
-- name: Install thefuck and zsh
+- name: Install thefuck and zsh (pacman)
   become: yes
   community.general.pacman:
     name:
       - thefuck
       - zsh
     state: latest
+  when: ansible_facts['distribution'] == "ArchLinux"
+- name: Install thefuck and zsh (apt)
+  become: yes
+  ansible.builtin.apt:
+    name:
+      - thefuck
+      - zsh
+    state: latest
+    force_apt_get: yes
+  when: ansible_facts['distribution'] == "Ubuntu"
 - name: Copy/update zshrc to home directory
   ansible.builtin.template:
     src: zshrc.j2

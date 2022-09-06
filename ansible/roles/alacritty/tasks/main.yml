@@ -4,6 +4,19 @@
   community.general.pacman:
     name: alacritty
     state: latest
+  when: ansible_facts['distribution'] == "ArchLinux"
+- name: Add alacritty Ubuntu PPA
+  become: yes
+  ansible.builtin.apt_repository:
+    repo: 'ppa:aslatter/ppa'
+  when: ansible_facts['distribution'] == "Ubuntu"
+- name: Install alacritty (apt)
+  become: yes
+  ansible.builtin.apt:
+    name: alacritty
+    state: latest
+    force_apt_get: yes
+  when: ansible_facts['distribution'] == "Ubuntu"
 - name: Create alacritty config directory
   ansible.builtin.file:
     path: "{{ config_home }}/alacritty"

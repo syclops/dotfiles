@@ -1,11 +1,30 @@
 ---
-- name: Install tmux and xclip (required for copy/paste)
+- name: Install tmux (pacman)
   become: yes
   community.general.pacman:
-    name:
-      - tmux
-      - xclip
+    name: tmux
     state: latest
+  when: ansible_facts['distribution'] == "ArchLinux"
+- name: Install tmux (apt)
+  become: yes
+  ansible.builtin.apt:
+    name: tmux
+    state: latest
+    force_apt_get: yes
+  when: ansible_facts['distribution'] == "Ubuntu"
+- name: Install xclip for copy/paste (pacman)
+  become: yes
+  community.general.pacman:
+    name: xclip
+    state: latest
+  when: ansible_facts['distribution'] == "ArchLinux"
+- name: Install xclip for copy/paste (apt)
+  become: yes
+  ansible.builtin.apt:
+    name: xclip
+    state: latest
+    force_apt_get: yes
+  when: ansible_facts['distribution'] == "Ubuntu"
 - name: Copy/update tmux configuration file
   ansible.builtin.template:
     src: tmux.conf.j2

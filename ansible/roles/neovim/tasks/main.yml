@@ -1,8 +1,17 @@
 ---
-- name: Install neovim
+- name: Install neovim (pacman)
+  become: yes
   community.general.pacman:
     name: neovim
     state: latest
+  when: ansible_facts['distribution'] == "ArchLinux"
+- name: Install neovim (apt)
+  become: yes
+  ansible.builtin.apt:
+    name: neovim
+    state: latest
+    force_apt_get: yes
+  when: ansible_facts['distribution'] == "Ubuntu" 
 - name: Create necessary directories for vim-plug script
   ansible.builtin.file:
     path: "{{ data_home }}/nvim/site/autoload"
